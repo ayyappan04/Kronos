@@ -269,12 +269,46 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    .metric-card {background:#1e1e2e;border-radius:10px;padding:16px;margin:4px;}
-    .risk-high    {color:#e74c3c;font-weight:bold;}
-    .risk-medium  {color:#f39c12;font-weight:bold;}
-    .risk-low     {color:#2ecc71;font-weight:bold;}
-    .stTabs [data-baseweb="tab"] {font-size:16px;}
-    h1 {color:#a78bfa;}
+    /* ── base overrides ─────────────────────────────────────────── */
+    html, body, [data-testid="stAppViewContainer"],
+    [data-testid="stMain"], section.main           { background:#0e1117 !important; }
+    [data-testid="stSidebar"]                      { background:#1e1e2e !important; }
+    [data-testid="stSidebarUserContent"] label,
+    [data-testid="stSidebarUserContent"] p         { color:#e2e8f0 !important; }
+
+    /* ── typography ─────────────────────────────────────────────── */
+    h1, h2, h3                                     { color:#a78bfa !important; }
+    p, li, label, .stCaption                       { color:#cbd5e1 !important; }
+
+    /* ── tabs ───────────────────────────────────────────────────── */
+    [data-baseweb="tab-list"]                      { background:#1e1e2e !important; border-radius:8px; }
+    [data-baseweb="tab"]                           { font-size:15px; color:#94a3b8 !important; }
+    [aria-selected="true"][data-baseweb="tab"]     { color:#a78bfa !important; border-bottom:2px solid #a78bfa !important; }
+
+    /* ── cards / containers ─────────────────────────────────────── */
+    [data-testid="stMetric"]                       { background:#1e1e2e; border-radius:8px; padding:12px; }
+    [data-testid="stMetricValue"]                  { color:#e2e8f0 !important; }
+    [data-testid="stMetricDelta"]                  { font-size:13px; }
+    div[data-testid="stDataFrame"]                 { background:#1e1e2e !important; }
+
+    /* ── inputs ─────────────────────────────────────────────────── */
+    [data-testid="stSelectbox"] > div,
+    [data-testid="stNumberInput"] > div            { background:#1e1e2e !important; color:#e2e8f0 !important; border-color:#334155 !important; }
+    [data-testid="stButton"] > button              { background:#a78bfa !important; color:#0e1117 !important; font-weight:600; border:none; }
+
+    /* ── alerts ─────────────────────────────────────────────────── */
+    .stInfo    { background:#1e3a5f !important; color:#93c5fd !important; border-color:#3b82f6 !important; }
+    .stSuccess { background:#14532d !important; color:#86efac !important; border-color:#22c55e !important; }
+    .stWarning { background:#431407 !important; color:#fdba74 !important; border-color:#f97316 !important; }
+    .stError   { background:#450a0a !important; color:#fca5a5 !important; border-color:#ef4444 !important; }
+
+    /* ── risk labels ────────────────────────────────────────────── */
+    .risk-high    { color:#f87171; font-weight:bold; }
+    .risk-medium  { color:#fbbf24; font-weight:bold; }
+    .risk-low     { color:#4ade80; font-weight:bold; }
+
+    /* ── divider ────────────────────────────────────────────────── */
+    hr { border-color:#334155 !important; }
 </style>
 """, unsafe_allow_html=True)
 
