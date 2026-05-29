@@ -1,3 +1,64 @@
+# Kronos Portfolio Investment Dashboard
+
+> **Fork additions by [@ayyappan04](https://github.com/ayyappan04)** — a full-stack Streamlit investment dashboard built on top of the Kronos financial foundation model, featuring live market data, AI price forecasts, and a Forecast vs Actual tracker.
+
+---
+
+## Portfolio Dashboard
+
+A 6-tab Streamlit dashboard for managing a **CAD $21,000 portfolio** across 8 stocks using Kronos AI forecasts and live market data.
+
+**Portfolio tickers:** `RDW` · `MNTS` · `OKLO` · `ADTN` · `ACHR` · `CLSK` · `QBTS` · `RGTI`
+
+### Quick Start
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+pip install streamlit yfinance plotly
+
+# 2. Launch the dashboard
+streamlit run portfolio_dashboard.py
+```
+
+### Dashboard Tabs
+
+| Tab | Description |
+|-----|-------------|
+| **Portfolio Overview** | Risk-weighted allocation table, live prices, allocation pie chart, sector breakdown |
+| **Stock Analysis** | Interactive candlestick chart with MA20/MA50, RSI(14), volume, return distribution |
+| **Kronos Forecast** | Load any Kronos model variant → run 30-day OHLCV AI forecast per ticker; auto-saves to `forecasts/` |
+| **Forecast vs Actual** | Live market comparison — overlays Kronos predicted close/band against real yfinance prices; tracks MAE, RMSE, directional accuracy as days elapse |
+| **Investment Research** | Adversarially verified thesis, catalysts, risks and analyst sentiment per stock (sourced May 2026) |
+| **Allocation Strategy** | Customisable weight sliders with estimated share counts and risk concentration chart |
+
+### Kronos Forecast Feature
+
+1. Open the sidebar → select a model (`kronos-mini`, `kronos-small`, `kronos-base`) and device (`cpu` / `mps` / `cuda`)
+2. Click **Load Kronos Model**
+3. Go to the **Kronos Forecast** tab → select a ticker → click **Run Kronos Forecast**
+4. The full 30-day OHLCV prediction is automatically saved to `forecasts/YYYY-MM-DD_<model>.json`
+
+### Forecast vs Actual
+
+Once forecasts are saved, the **Forecast vs Actual** tab fetches live prices from yfinance and compares them against the Kronos predictions day-by-day:
+
+- Predicted close line + high/low uncertainty band
+- Actual close line updated in real time
+- Accuracy metrics: MAE, RMSE, directional accuracy %
+- All-ticker snapshot summary showing live price vs forecast base
+
+### Saved Forecasts
+
+The `forecasts/` directory contains dated JSON snapshots of all predictions:
+
+```
+forecasts/
+└── 2026-05-29_kronos-mini.json   ← 30-day OHLCV forecast for all 8 tickers
+```
+
+---
+
 <div align="center">
   <h2><b>Kronos: A Foundation Model for the Language of Financial Markets </b></h2>
 </div>
